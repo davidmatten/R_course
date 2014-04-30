@@ -58,29 +58,38 @@ options(scipen = 35)
 \item A function is a piece of code that performs a task.
 \item We have seen the use of c() already. And a few other functions (maybe you didn’t know they were functions).
 \end{itemize}
-An example
+\vspace{0.5in}An example:\\
 Imagine we had some predicted values, actual values and we want to calculate the root, mean, square error (RMSE) between them.
 \end{frame}
 
 
-\begin{frame}[fragile]{}
+\begin{frame}[fragile]{the instinctive way...}
 <<>>=
 actual <- c(1, 5, 10, 20)
-predicted <- c(1.1, 4.8, 10.5, 18.6)
-sqrt(mean((actual - predicted)^2))
 
+predicted <- c(1.1, 4.8, 10.5, 18.6)
+
+sqrt(mean((actual - predicted)^2))
+@
+\end{frame}
+
+\begin{frame}[fragile]{the same, but in a function...}
+<<>>=
 calcRMSE <- function (a, b) {
       sqrt( mean( (a - b)^2 ) )
 }
 
 calcRMSE(actual, predicted)
 @
+In the above example, these two are almost the same - so,\\
+Why write a function?\\
 \end{frame}
 
 
-\begin{frame}
-Not only is it cumbersome to write out the full contents of a function every time you want to do whatever calculation, but also it can become very difficult to quickly see what it does. %\vspace{\baselineskip}
+\begin{frame}[fragile]{But why write functions?}
+Not only can it be cumbersome to write out the full contents of a function every time you want do a task, but also it can become very difficult to quickly see what the code does when reading back.\\ %\vspace{\baselineskip}
 Look at the next few pieces of code for increasing complex examples, can you tell what each does from the code?
+
 \end{frame}
 
 
@@ -111,10 +120,73 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 \end{frame}
 
 
-\begin{frame}[fragile]{How to install and load packages}
-rawr
+\begin{frame}[fragile]{Summary - why use functions?}
+
+\begin{itemize}
+\item Generalize
+\item Free's up cognative space
+\item Debugging
+\item Easier to read
+\item Less typing
+\end{itemize}
 \end{frame}
 
+%now that I have hopefully convinced you of why to use functions, here is a closer look at the syntax.
+\begin{frame}[fragile]{Syntax}
+Now that we all agree writing functions is the way forward, lets take a closer look at the syntax...
+<<>>=
+calcRMSE <- function (a, b) {
+      sqrt( mean( (a - b)^2 ) )
+}
+@
+\end{frame}
+
+% Now you have a grasp on the syntax of a function, lets try write our own.
+\begin{frame}[fragile]{Writing our own!}
+Lets find the average speed of a rally driver over a course.
+<<>>=
+speeds <- c(67, 132, 173, 128)
+
+averageSpeeds <- function (s) {
+    sum <- sum(speeds)
+    count <- length(speeds)
+    return (sum / count)
+}
+
+averageSpeeds(speeds)
+@
+\end{frame}
+
+\begin{frame}[fragile]{How to install and load packages}
+rstudio
+terminal
+\end{frame}
+
+\begin{frame}[fragile]{Built in functions}
+There are loads of built in functions!
+
+\end{frame}
+
+
+\begin{frame}[fragile]{A word about scope}
+Show how a variable set inside a function, is local to that function. demo error.
+Draw a picture
+
+\end{frame}
+
+\begin{frame}[fragile]{scope contd.}
+<<>>=
+averageSpeeds <- function (s) {
+    sum <- sum(speeds)
+    count <- length(speeds)
+    return (sum / count)
+}
+
+speeds <- c(67, 132, 173, 128)
+averageSpeeds(speeds)
+@
+%demo this breaking if we have speed in a different place...
+\end{frame}
 
 
 
