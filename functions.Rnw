@@ -1,0 +1,122 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\newcommand\myheading[1]{%
+  \par\bigskip
+  {\Large\bfseries#1}\par\smallskip}
+
+\begin{document}
+
+\title{Functions and packages}
+\author{David Matten}
+\date{30 April 2014}
+
+\maketitle
+
+\begin{frame}[fragile]{Overview}
+
+<<include=FALSE>>=
+library(xtable)
+options(width = 35)
+options(scipen = 35)
+@
+
+\begin{itemize}
+
+\item Heirachy
+\item What is a function?
+\item Built in and Write your own
+\item What about packages?
+\item Built in and Write your own
+\item How to install and load packages
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Heirachy}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/heirachy.jpg}
+\label{overflow}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{.libPaths()}
+<<>>=
+.libPaths()
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{What is a function?}
+\begin{itemize}
+\item A function is a piece of code that performs a task.
+\item We have seen the use of c() already. And a few other functions (maybe you didn’t know they were functions).
+\end{itemize}
+An example
+Imagine we had some predicted values, actual values and we want to calculate the root, mean, square error (RMSE) between them.
+\end{frame}
+
+
+\begin{frame}[fragile]{}
+<<>>=
+actual <- c(1, 5, 10, 20)
+predicted <- c(1.1, 4.8, 10.5, 18.6)
+sqrt(mean((actual - predicted)^2))
+
+calcRMSE <- function (a, b) {
+      sqrt( mean( (a - b)^2 ) )
+}
+
+calcRMSE(actual, predicted)
+@
+\end{frame}
+
+
+\begin{frame}
+Not only is it cumbersome to write out the full contents of a function every time you want to do whatever calculation, but also it can become very difficult to quickly see what it does. %\vspace{\baselineskip}
+Look at the next few pieces of code for increasing complex examples, can you tell what each does from the code?
+\end{frame}
+
+
+\begin{frame}[fragile]{sd}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/sd.jpg}
+\label{overflow}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]{factor}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/factor.jpg}
+\label{overflow}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]{table}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/table.jpg}
+\label{overflow}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]{How to install and load packages}
+rawr
+\end{frame}
+
+
+
+
+
+\end{document}
