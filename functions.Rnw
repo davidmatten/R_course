@@ -189,6 +189,13 @@ averageSpeeds(speeds)
 \end{frame}
 
 
+\begin{frame}[fragile]{why use functions --- for dave to process}
+http://www.cs.utah.edu/~zachary/computing/lessons/uces-10/uces-10/node11.html
+https://newton.ex.ac.uk/teaching/resources/jmr/4.html
+\end{frame}
+
+
+
 
 
 \end{document}
