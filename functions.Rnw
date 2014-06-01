@@ -10,84 +10,175 @@
 
 \title{Functions and packages}
 \author{David Matten}
-\date{30 April 2014}
+\date{26 May 2014}
 
 \maketitle
 
+
 \begin{frame}[fragile]{Overview}
-
-<<include=FALSE>>=
-library(xtable)
-options(width = 35)
-options(scipen = 35)
-@
-
+This slide deck will cover the following ideas:
 \begin{itemize}
-
-\item Heirachy
-\item What is a function?
-\item Built in and Write your own
-\item What about packages?
-\item Built in and Write your own
-\item How to install and load packages
+\item What a library is, and where they are.
+\item What a package is, and how to get more.
+\item How to load a package for use.
+\item What a script is.
+\item What a function is, and how to write your own.
+\item Why functions are useful.
+\item What arguments are, and different ways to pass them.
+\item What an environment is, the difference between local and global.
+\item Returning values from functions.
 \end{itemize}
 
 \end{frame}
 
 
-\begin{frame}[fragile]{Heirachy}
+\begin{frame}[fragile]{Introduction}
+Packages are collections of R functions, data, and background code in a well-defined format.
+\linebreak
+\linebreak
+They are convenient groupings of sets of tools, for dealing with problems.
+\linebreak
+\linebreak
+Being able to share your solutions, or use what others have developed is hugely beneficial.
+\end{frame}
+
+
+\begin{frame}[fragile]{Hierarchy}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/heirachy.jpg}
+\includegraphics[width=90mm]{pictures/library_function_heirachy.jpeg}
 \label{overflow}
 \end{figure}
 
 \end{frame}
 
 
-\begin{frame}[fragile]{.libPaths()}
+\begin{frame}[fragile]{Where are your libraries?}
+We can use .libPaths() to find where libraries are on your computer.
+These are directories of packages.
 <<>>=
 .libPaths()
 @
 \end{frame}
 
 
-\begin{frame}[fragile]{What is a function?}
+\begin{frame}[fragile]{What is a Package?}
+Packages are a way to maintain collections of R functions, background code and data sets.
+\linebreak
+R comes with a standard set of packages. We can see what packages are currently installed by running:
+<<eval=FALSE>>=
+library()
+@
+Packages can contain both data, R files and external code.
+\end{frame}
+
+
+\begin{frame}[fragile]{Packages contain a standard set of items.}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/library_screenCap_colorized.jpg}
+\label{overflow}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]{How to get packages?}
+There are two main ways to obtain packages from within RStudio:
 \begin{itemize}
-\item A function is a piece of code that performs a task.
-\item We have seen the use of c() already. And a few other functions (maybe you didn’t know they were functions).
+\item From CRAN Repository \url{http://cran.r-project.org/}
+\item From a local file
 \end{itemize}
-\vspace{0.5in}An example:\\
-Imagine we had some predicted values, actual values and we want to calculate the root, mean, square error (RMSE) between them.
+
+\end{frame}
+
+\begin{frame}[fragile]{From CRAN Repository}
+In RStudio, under Packages, select "Install Packages". Search for the Package name. Install.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/package_install_CRAN.jpg}
+\label{overflow}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{From a local file}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/package_install_local.jpg}
+\label{overflow}
+\end{figure}
+
 \end{frame}
 
 
-\begin{frame}[fragile]{the instinctive way...}
+\begin{frame}[fragile]{Using packages}
+Once we have acquired a package, we have to load it into the current session. Use the library command for this.
 <<>>=
-actual <- c(1, 5, 10, 20)
+library(boot)
+@
+Here, we load the package named "boot".
+\end{frame}
 
-predicted <- c(1.1, 4.8, 10.5, 18.6)
+\begin{frame}[fragile]{Scripts}
+Scripts are files.
+\linebreak
+Scripts can contain functions and lists of instructions. Typically they have the extension ".R"
+\linebreak 
+Under the "R" folder of a package, we can find examples of scripts.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/example_script.jpg}
+\label{overflow}
+\end{figure}
+\end{frame}
 
-sqrt(mean((actual - predicted)^2))
+
+\begin{frame}[fragile]{Functions}
+A function is a piece of code that performs a task. Typically this is very specific.
+\linebreak
+\linebreak
+We have seen the use of c() already, and a few other functions (maybe you didn’t know they were functions).
+\linebreak
+\linebreak
+An example:
+\linebreak
+Imagine we have a collection of individuals heights and weights. We want to calculate their BMI's.
+\end{frame}
+
+
+\begin{frame}[fragile]{without functions}
+<<>>=
+heights <- c(1.50, 1.92, 1.74, 1.67)
+
+weights <- c(80, 94, 78, 58)
+
+weights / ( heights * heights )
 @
 \end{frame}
 
-\begin{frame}[fragile]{the same, but in a function...}
+\begin{frame}[fragile]{With a function...}
 <<>>=
-calcRMSE <- function (a, b) {
-      sqrt( mean( (a - b)^2 ) )
+calcBMI <- function (weights, heights) {
+      x <- weights / ( heights * heights )
+      return (x)
 }
-
-calcRMSE(actual, predicted)
 @
-In the above example, these two are almost the same - so,\\
+This is like a recipe.
+<<>>=
+calcBMI(weights, heights)
+@
+This is like telling R to make the recipe.
+\linebreak
+\linebreak
+In the above example, these two are almost the same amount of effort- so,\\
 Why write a function?\\
 \end{frame}
 
 
 \begin{frame}[fragile]{But why write functions?}
-Not only can it be cumbersome to write out the full contents of a function every time you want do a task, but also it can become very difficult to quickly see what the code does when reading back.\\ %\vspace{\baselineskip}
+Not only can it be cumbersome to write out the full contents of a function every time you want do a task, but also it can become very difficult to quickly see what the code does when reading back.
+\linebreak
+\linebreak
 Look at the next few pieces of code for increasing complex examples, can you tell what each does from the code?
 
 \end{frame}
@@ -123,79 +214,326 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 \begin{frame}[fragile]{Summary - why use functions?}
 
 \begin{itemize}
-\item Generalize
+\item Able to write general code to re-use
 \item Free's up cognative space
-\item Debugging
-\item Easier to read
-\item Less typing
+\item Makes debugging easier
+\item Easier to read - broken into logical blocks of code
 \end{itemize}
+Imagine having to write each function from scratch, or include it in your script every time you wanted to use it.
+\linebreak
+Just adding numbers using sum shows us how much we rely on functions.
+\linebreak
+\linebreak
+Now that I have (hopefully) convinced you of why to use functions, here is a closer look at the syntax.
 \end{frame}
 
-%now that I have hopefully convinced you of why to use functions, here is a closer look at the syntax.
 \begin{frame}[fragile]{Syntax}
-Now that we all agree writing functions is the way forward, lets take a closer look at the syntax...
-<<>>=
-calcRMSE <- function (a, b) {
-      sqrt( mean( (a - b)^2 ) )
+Lets take a closer look at the syntax...
+<<eval=FALSE>>=
+f <- function(<arguments>) {
+## Do something interesting
 }
+@
+And, with our example...
+<<>>=
+calcBMI <- function (weights, heights) {
+      x <- weights / ( heights * heights )
+      return (x)
+}
+@
+\end{frame}
+
+\begin{frame}[fragile]{Syntax contd.}
+Lets take a look at the inner workings of the function: mean
+<<>>=
+mean.default
 @
 \end{frame}
 
 % Now you have a grasp on the syntax of a function, lets try write our own.
 \begin{frame}[fragile]{Writing our own!}
-Lets find the average speed of a rally driver over a course.
+Lets write a function to calculate the average age of a group of rally drivers.
 <<>>=
-speeds <- c(67, 132, 173, 128)
+ages <- c(27, 24, 35, 24, 24, 33, 35, 22, 28)
 
-averageSpeeds <- function (s) {
-    sum <- sum(speeds)
-    count <- length(speeds)
-    return (sum / count)
+average <- function (x) 
+{
+    sumx <- sum(x)
+    countx <- length(x)
+    return (sumx / countx)
 }
 
-averageSpeeds(speeds)
+average(ages)
 @
 \end{frame}
 
-\begin{frame}[fragile]{How to install and load packages}
-rstudio
-terminal
-\end{frame}
 
 \begin{frame}[fragile]{Built in functions}
-There are loads of built in functions!
-
-\end{frame}
-
-
-\begin{frame}[fragile]{A word about scope}
-Show how a variable set inside a function, is local to that function. demo error.
-Draw a picture
-
-\end{frame}
-
-\begin{frame}[fragile]{scope contd.}
-<<>>=
-averageSpeeds <- function (s) {
-    sum <- sum(speeds)
-    count <- length(speeds)
-    return (sum / count)
-}
-
-speeds <- c(67, 132, 173, 128)
-averageSpeeds(speeds)
+There are lots of built in functions!
+\linebreak
+We cheated a little in the above example, by making use of functions within our example function.
+\linebreak
+\linebreak
+<<eval = FALSE>>=
+sum()
 @
-%demo this breaking if we have speed in a different place...
+is a function.
+
+\end{frame}
+
+%\begin{frame}[fragile]{Environments}
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[width=90mm]{pictures/environments.jpeg}
+%\label{overflow}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}[fragile]{A word about environment}
+Setting a variable
+<<>>=
+var <- c(1,2,3)
+@
+Seeing what is inside that variable.
+<<>>=
+print(var)
+@
+\end{frame}
+%Show how a variable set inside a function, is local to that function. demo error.
+%Draw a picture
+
+\begin{frame}[fragile]{Variables set inside functions, are local to functions}
+Setting the variable inside a function
+<<>>=
+create_var <- function () 
+{
+    var2 <- c(1,2,3)
+}
+@
+Call the function
+<<>>=
+create_var()
+@
+Try see whats inside the variable.
+<<>>=
+print(var2)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Variables set outside functions, are globally available}
+Setting the variable outside a function
+<<>>=
+var3 <- c(1,2,3)
+@
+Make the function
+<<>>=
+print_var <- function () 
+{
+    print(var3)
+}
+@
+Try see whats inside the variable, from within the function.
+\linebreak
+Call the function.
+<<>>=
+print_var()
+@
 \end{frame}
 
 
-\begin{frame}[fragile]{why use functions --- for dave to process}
-http://www.cs.utah.edu/~zachary/computing/lessons/uces-10/uces-10/node11.html
-https://newton.ex.ac.uk/teaching/resources/jmr/4.html
+\begin{frame}[fragile]{Environments contd.}
+One last note on environments.
+<<>>=
+myList <- list(col1=1:10, col2=rnorm(10))
+
+print(myList)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Environments contd.}
+Can we access those col1 and col2 variables?
+<<>>=
+print(col1)
+@
+Looks like not... 
+<<>>=
+myList <- transform(myList, col3=col1+col2)
+
+print(myList)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Environments contd.}
+But thats really strange, how did it know what col1 and 2 were?
+\linebreak
+\linebreak
+\pause
+Because we gave it the variable 'myList', which has its own environmental variables.
 \end{frame}
 
 
 
+\begin{frame}[fragile]{Arguments}
+Functions can be passed named arguments, or positional arguments.
+\linebreak
+named arguments example:
+<<>>=
+f <- function(first, second){
+    x<-first - second
+    return(x)
+}
+f(first = 10, second = 8)
+@
+And we could equally do
+<<>>=
+f(second=8, first=10)
+@
+Because these are named, the order in which we pass them to the function does not matter.
+\end{frame}
+
+\begin{frame}[fragile]{arguments cont.}
+Positional
+\linebreak
+<<>>=
+f <- function(first, second){
+    x <- first - second
+    return(x)
+}
+@
+Now if we swap the order, the results change
+<<>>=
+f(10, 8)
+f(8, 10)
+@
+\end{frame}
+
+\begin{frame}[fragile]{So many ways to call a function}
+This means that all of these are equivalent:
+<<>>=
+seq(from=1, to=10, by=1)
+seq(1,10,1)
+seq(by=1,1,10)
+seq(to=10,by=1,from=1)
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Missing and defaults}
+Its possible to skip arguments, or assign defaults
+<<>>=
+ages <- c(34, 52, 23, 33, 33, 41)
+f <- function(a,b,c=TRUE){
+    print(mean(a))
+    print(c)
+}
+f(ages)
+@
+This works even without passing in b or c.
+\end{frame}
+
+
+\begin{frame}[fragile]{Mixing methods}
+Its even possible to mix these two methods:
+\linebreak
+TODO-think of example with enough arguments to demo mixing pass by position and by name.
+<<>>=
+
+@
+\end{frame}
+
+\begin{frame}[fragile]{partial matching}
+When matching arguments, R will try and match part of a arguments name. This is know as Partial matching.
+<<>>=
+f <- function(first, second)
+{
+    print(first)
+    print(second)
+}
+f(first="first argument", sec="second argument")
+@
+We only partly name "second" as "sec". And R still understands.
+\end{frame}
+
+\begin{frame}[fragile]{Order of matching}
+\linebreak
+When trying to match arguments, R will test in the following order:
+\linebreak
+1) exact match.
+\linebreak
+2)partial match.
+\linebreak
+3)positional match
+\end{frame}
+
+\begin{frame}[fragile]{}
+You might also see "...".
+\linebreak
+This just means, a variable number of arguments. Typically, they are passed onto other functions.
+\end{frame}
+
+\begin{frame}[fragile]{Return}
+We can pass arguments to a function, and functions are able to return values to where they were called.
+<<>>=
+f <- function()
+{
+    return(10)
+}
+f()
+@
+We are able to capture this return value.
+<<>>=
+x <- f()
+print(x)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Return}
+Some functions return lots.
+<<>>=
+year <- c(2000 ,   2001  ,  2002  ,  2003 ,   2004)
+rate <- c(9.34 ,   8.50  ,  7.62  ,  6.93  ,  6.60)
+fit <- lm(rate ~ year)
+attributes(fit)
+fit$residuals
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Summary}
+We should now understand:
+\begin{itemize}
+\item What a library is, and where they are.
+\item What a package is, and how to get more.
+\item How to load a package for use.
+\item What a script is.
+\item What a function is, and how to write your own.
+\item Why functions are useful.
+\item What arguments are, and different ways to pass them.
+\item What an environment is, the difference between local and global.
+\item Returning values from functions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{end}
+Thank you.
+\end{frame}
+
+\begin{frame}[fragile]{Tutorial}
+
+
+
+\begin{itemize}
+\item Describe the heirachy of packages, functions and libraries.
+\item List the libraries on your computer.
+\item Give 5 packges that are already installed on your machine.
+\item Choose and install a package from CRAN
+\item Load a package into your R environment, and call it.
+\item Write your own function to take two numbers, multiply them, and print the result within the function.
+\item Modify your function to accept arguments by name.
+\item Call your function using partial matching.
+\end{itemize}
+\end{frame}
 
 
 \end{document}

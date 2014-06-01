@@ -1,0 +1,88 @@
+Tutorial.
+
+- Describe the heirachy of packages, functions and libraries.
+- Give the path to 2 libraries on your computer.
+- Give 5 packges that are already installed on your machine.
+- Choose and install a package from CRAN
+- Load a package into your R environment, and call it.
+- Write your own function to take two numbers, multiply them, and print the result within the function.
+- Modify your function to accept arguments by name.
+- Call your function using partial matching.
+
+
+
+background things -- dont get confused with Roxy data paths.
+libraries.
+installing to your own user path.
+libraries are stored in your own library first.
+Computer at home - shared computer. Sharing computers in a lab at varsity.
+if you change a user, things can happen.
+
+
+
+install a package. demo what functions come along with it.
+help(package=....)
+
+
+dependancies are packages that this package uses.
+
+
+CRAN repo. lots of them at universities around the world. 
+thats why the list is long - you can choose any, they are all the same. only speed might change.
+
+
+why download from cran vs. local.
+old versions from CRAN are available.
+looking for previous versions. cran website.
+try find externally linked previous versions of packages (github)
+
+
+
+include script.
+
+
+on functions... instead of RMSE, calculate BMI.
+
+
+
+give a def. of encapsulation.
+
+
+
+Syntax slide - include "mean.default" in R. to show that the code is there in the background
+
+
+
+in explination, explain that in STATA, there are things called functions, but named something else...
+
+
+get rid of image, change to using previous example - sum(x)...
+
+
+"in the plotting lectures, the concept of an environment will become crucial"
+
+demo creating variables, and missing variables in r studio.. objects pop up in rstudio.
+
+
+return lists for plotting. - simple regression after slide on environments.
+
+
+environments - use dataframe to df. instead of list to dataframe
+
+
+change mean on "so many ways to call functions" to seq.
+length.out
+
+
+TODO, seq. value, value, by=1.0
+or can try rnorm.
+
+
+"give the path to the libraries on your computer"
+
+
+
+
+
+Packages come from many different sources, so there is no one standard convention for naming schemas (in arguments for example).
+Students need to understand the difference between this and (for example) Matlab - where one body decides conventions.
