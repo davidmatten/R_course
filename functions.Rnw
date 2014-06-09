@@ -107,7 +107,24 @@ In RStudio, under Packages, select "Install Packages". Search for the Package na
 \includegraphics[width=90mm]{pictures/package_install_local.jpg}
 \label{overflow}
 \end{figure}
+\end{frame}
 
+
+\begin{frame}[fragile]{Old versions?}
+We can find old versions of packages from the CRAN website
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/cran_old_package_versions2.jpg}
+\label{overflow}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Old versions? contd.}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/cran_old_package_versions_boot.jpg}
+\label{overflow}
+\end{figure}
 \end{frame}
 
 
@@ -118,6 +135,36 @@ library(boot)
 @
 Here, we load the package named "boot".
 \end{frame}
+
+
+\begin{frame}[fragile]{What comes with a package?}
+Once we have aquired a package, we can find out more about its contents by using help
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/help_boot.jpg}
+\label{overflow}
+\end{figure}
+<<eval=FALSE>>=
+help(boot)
+library(help="boot")
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{What comes with a package?}
+From the previous slide, we see that the package "boot" include a function called "abc.ci". I don't know what this function does, so to find out I can ask R for help on this function.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/help_abc_ci.jpg}
+\label{overflow}
+\end{figure}
+<<eval=FALSE>>=
+help(abc.ci)
+@
+
+\end{frame}
+
+
 
 \begin{frame}[fragile]{Scripts}
 Scripts are files.
@@ -278,7 +325,12 @@ We cheated a little in the above example, by making use of functions within our 
 sum()
 @
 is a function.
-
+\linebreak
+\linebreak
+In fact, we could have just used the function:
+<<>>=
+mean(ages)
+@
 \end{frame}
 
 %\begin{frame}[fragile]{Environments}
@@ -344,9 +396,9 @@ print_var()
 \begin{frame}[fragile]{Environments contd.}
 One last note on environments.
 <<>>=
-myList <- list(col1=1:10, col2=rnorm(10))
+df = data.frame(col1=1:10, col2=rnorm(10))
 
-print(myList)
+print(df)
 @
 
 \end{frame}
@@ -358,9 +410,9 @@ print(col1)
 @
 Looks like not... 
 <<>>=
-myList <- transform(myList, col3=col1+col2)
+df <- transform(df, col3=col1+col2)
 
-print(myList)
+print(df)
 @
 \end{frame}
 
@@ -377,7 +429,7 @@ Because we gave it the variable 'myList', which has its own environmental variab
 \begin{frame}[fragile]{Arguments}
 Functions can be passed named arguments, or positional arguments.
 \linebreak
-named arguments example:
+Named arguments example:
 <<>>=
 f <- function(first, second){
     x<-first - second
@@ -392,7 +444,7 @@ f(second=8, first=10)
 Because these are named, the order in which we pass them to the function does not matter.
 \end{frame}
 
-\begin{frame}[fragile]{arguments cont.}
+\begin{frame}[fragile]{arguments contd.}
 Positional
 \linebreak
 <<>>=
@@ -433,16 +485,8 @@ This works even without passing in b or c.
 \end{frame}
 
 
-\begin{frame}[fragile]{Mixing methods}
-Its even possible to mix these two methods:
-\linebreak
-TODO-think of example with enough arguments to demo mixing pass by position and by name.
-<<>>=
 
-@
-\end{frame}
-
-\begin{frame}[fragile]{partial matching}
+\begin{frame}[fragile]{Partial matching}
 When matching arguments, R will try and match part of a arguments name. This is know as Partial matching.
 <<>>=
 f <- function(first, second)
@@ -461,9 +505,9 @@ When trying to match arguments, R will test in the following order:
 \linebreak
 1) exact match.
 \linebreak
-2)partial match.
+2) partial match.
 \linebreak
-3)positional match
+3) positional match
 \end{frame}
 
 \begin{frame}[fragile]{}

@@ -173,7 +173,24 @@ In RStudio, under Packages, select "Install Packages". Search for the Package na
 \includegraphics[width=90mm]{pictures/package_install_local.jpg}
 \label{overflow}
 \end{figure}
+\end{frame}
 
+
+\begin{frame}[fragile]{Old versions?}
+We can find old versions of packages from the CRAN website
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/cran_old_package_versions2.jpg}
+\label{overflow}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Old versions? contd.}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/cran_old_package_versions_boot.jpg}
+\label{overflow}
+\end{figure}
 \end{frame}
 
 
@@ -189,6 +206,46 @@ Once we have acquired a package, we have to load it into the current session. Us
 
 Here, we load the package named "boot".
 \end{frame}
+
+
+\begin{frame}[fragile]{What comes with a package?}
+Once we have aquired a package, we can find out more about its contents by using help
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/help_boot.jpg}
+\label{overflow}
+\end{figure}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{help}\hlstd{(boot)}
+\hlkwd{library}\hlstd{(}\hlkwc{help} \hlstd{=} \hlstr{"boot"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{What comes with a package?}
+From the previous slide, we see that the package "boot" include a function called "abc.ci". I don't know what this function does, so to find out I can ask R for help on this function.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pictures/help_abc_ci.jpg}
+\label{overflow}
+\end{figure}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{help}\hlstd{(abc.ci)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+
+\end{frame}
+
+
 
 \begin{frame}[fragile]{Scripts}
 Scripts are files.
@@ -377,7 +434,7 @@ Lets take a look at the inner workings of the function: mean
 ##     }
 ##     .Internal(mean(x))
 ## }
-## <bytecode: 0x2112d38>
+## <bytecode: 0x3098cf8>
 ## <environment: namespace:base>
 \end{verbatim}
 \end{kframe}
@@ -425,6 +482,19 @@ We cheated a little in the above example, by making use of functions within our 
 \end{knitrout}
 
 is a function.
+\linebreak
+\linebreak
+In fact, we could have just used the function:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{mean}\hlstd{(ages)}
+\end{alltt}
+\begin{verbatim}
+## [1] 28
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \end{frame}
 
@@ -539,17 +609,22 @@ One last note on environments.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{myList} \hlkwb{<-} \hlkwd{list}\hlstd{(}\hlkwc{col1} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{10}\hlstd{,} \hlkwc{col2} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlnum{10}\hlstd{))}
+\hlstd{df} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwc{col1} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{10}\hlstd{,} \hlkwc{col2} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlnum{10}\hlstd{))}
 
-\hlkwd{print}\hlstd{(myList)}
+\hlkwd{print}\hlstd{(df)}
 \end{alltt}
 \begin{verbatim}
-## $col1
-##  [1]  1  2  3  4  5  6  7  8  9 10
-## 
-## $col2
-##  [1] -0.9356 -0.9547  1.3515  0.3447  1.0462  0.7687 -0.4108 -2.0018
-##  [9] -0.9951 -0.3733
+##    col1    col2
+## 1     1 -1.1076
+## 2     2 -0.6090
+## 3     3 -0.1518
+## 4     4  0.6180
+## 5     5 -0.7792
+## 6     6  0.1721
+## 7     7  0.3001
+## 8     8 -0.8380
+## 9     9  0.5509
+## 10   10 -2.6014
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -573,22 +648,22 @@ Looks like not...
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{myList} \hlkwb{<-} \hlkwd{transform}\hlstd{(myList,} \hlkwc{col3} \hlstd{= col1} \hlopt{+} \hlstd{col2)}
+\hlstd{df} \hlkwb{<-} \hlkwd{transform}\hlstd{(df,} \hlkwc{col3} \hlstd{= col1} \hlopt{+} \hlstd{col2)}
 
-\hlkwd{print}\hlstd{(myList)}
+\hlkwd{print}\hlstd{(df)}
 \end{alltt}
 \begin{verbatim}
 ##    col1    col2    col3
-## 1     1 -0.9356 0.06443
-## 2     2 -0.9547 1.04525
-## 3     3  1.3515 4.35151
-## 4     4  0.3447 4.34465
-## 5     5  1.0462 6.04623
-## 6     6  0.7687 6.76874
-## 7     7 -0.4108 6.58922
-## 8     8 -2.0018 5.99819
-## 9     9 -0.9951 8.00488
-## 10   10 -0.3733 9.62667
+## 1     1 -1.1076 -0.1076
+## 2     2 -0.6090  1.3910
+## 3     3 -0.1518  2.8482
+## 4     4  0.6180  4.6180
+## 5     5 -0.7792  4.2208
+## 6     6  0.1721  6.1721
+## 7     7  0.3001  7.3001
+## 8     8 -0.8380  7.1620
+## 9     9  0.5509  9.5509
+## 10   10 -2.6014  7.3986
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -608,7 +683,7 @@ Because we gave it the variable 'myList', which has its own environmental variab
 \begin{frame}[fragile]{Arguments}
 Functions can be passed named arguments, or positional arguments.
 \linebreak
-named arguments example:
+Named arguments example:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -639,7 +714,7 @@ And we could equally do
 Because these are named, the order in which we pass them to the function does not matter.
 \end{frame}
 
-\begin{frame}[fragile]{arguments cont.}
+\begin{frame}[fragile]{arguments contd.}
 Positional
 \linebreak
 \begin{knitrout}
@@ -864,7 +939,7 @@ Thank you.
 
 \begin{itemize}
 \item Describe the heirachy of packages, functions and libraries.
-\item Give the path to 2 libraries on your computer.
+\item List the libraries on your computer.
 \item Give 5 packges that are already installed on your machine.
 \item Choose and install a package from CRAN
 \item Load a package into your R environment, and call it.
