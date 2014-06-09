@@ -10,23 +10,25 @@
 
 \title{Functions and packages}
 \author{David Matten}
-\date{26 May 2014}
+\date{09 June 2014}
 
 \maketitle
 
 
 \begin{frame}[fragile]{Overview}
-This slide deck will cover the following ideas:
+This slide deck will cover the following questions:
 \begin{itemize}
-\item What a library is, and where they are.
-\item What a package is, and how to get more.
-\item How to load a package for use.
-\item What a script is.
-\item What a function is, and how to write your own.
-\item Why functions are useful.
-\item What arguments are, and different ways to pass them.
-\item What an environment is, the difference between local and global.
-\item Returning values from functions.
+\item What is a library, and where to find your own.
+\item What is a package, and why we use them.
+\item How to get more packages.
+\item How to use a package.
+\item What is a script.
+\item What is a function, and why we use them
+\item Understanding the syntax of functions, and how to write your own.
+\item Understanding environments.
+\item Understanding arguments.
+\item How to get data back from functions.
+\item How to return values from functions.
 \end{itemize}
 
 \end{frame}
@@ -571,10 +573,10 @@ Thank you.
 \item Describe the heirachy of packages, functions and libraries.
 \item List the libraries on your computer.
 \item Give 5 packges that are already installed on your machine.
-\item Choose and install a package from CRAN
-\item Load a package into your R environment, and call it.
+\item Find and install the "Xtable" package from CRAN.
+\item Load any package into your R environment, and make use of some piece of it, without errors.
 \item Write your own function to take two numbers, multiply them, and print the result within the function.
-\item Modify your function to accept arguments by name.
+\item Make sure your function can accept arguments by name.
 \item Call your function using partial matching.
 \end{itemize}
 \end{frame}

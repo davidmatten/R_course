@@ -60,23 +60,25 @@
 
 \title{Functions and packages}
 \author{David Matten}
-\date{26 May 2014}
+\date{09 June 2014}
 
 \maketitle
 
 
 \begin{frame}[fragile]{Overview}
-This slide deck will cover the following ideas:
+This slide deck will cover the following questions:
 \begin{itemize}
-\item What a library is, and where they are.
-\item What a package is, and how to get more.
-\item How to load a package for use.
-\item What a script is.
-\item What a function is, and how to write your own.
-\item Why functions are useful.
-\item What arguments are, and different ways to pass them.
-\item What an environment is, the difference between local and global.
-\item Returning values from functions.
+\item What is a library, and where to find your own.
+\item What is a package, and why we use them.
+\item How to get more packages.
+\item How to use a package.
+\item What is a script.
+\item What is a function, and why we use them
+\item Understanding the syntax of functions, and how to write your own.
+\item Understanding environments.
+\item Understanding arguments.
+\item How to get data back from functions.
+\item How to return values from functions.
 \end{itemize}
 
 \end{frame}
@@ -434,7 +436,7 @@ Lets take a look at the inner workings of the function: mean
 ##     }
 ##     .Internal(mean(x))
 ## }
-## <bytecode: 0x3098cf8>
+## <bytecode: 0x2d40e88>
 ## <environment: namespace:base>
 \end{verbatim}
 \end{kframe}
@@ -615,16 +617,16 @@ One last note on environments.
 \end{alltt}
 \begin{verbatim}
 ##    col1    col2
-## 1     1 -1.1076
-## 2     2 -0.6090
-## 3     3 -0.1518
-## 4     4  0.6180
-## 5     5 -0.7792
-## 6     6  0.1721
-## 7     7  0.3001
-## 8     8 -0.8380
-## 9     9  0.5509
-## 10   10 -2.6014
+## 1     1 -0.2004
+## 2     2  1.1114
+## 3     3  0.5627
+## 4     4  1.2538
+## 5     5  0.2058
+## 6     6  1.8460
+## 7     7  1.9196
+## 8     8  1.0385
+## 9     9  0.4043
+## 10   10 -0.3654
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -653,17 +655,17 @@ Looks like not...
 \hlkwd{print}\hlstd{(df)}
 \end{alltt}
 \begin{verbatim}
-##    col1    col2    col3
-## 1     1 -1.1076 -0.1076
-## 2     2 -0.6090  1.3910
-## 3     3 -0.1518  2.8482
-## 4     4  0.6180  4.6180
-## 5     5 -0.7792  4.2208
-## 6     6  0.1721  6.1721
-## 7     7  0.3001  7.3001
-## 8     8 -0.8380  7.1620
-## 9     9  0.5509  9.5509
-## 10   10 -2.6014  7.3986
+##    col1    col2   col3
+## 1     1 -0.2004 0.7996
+## 2     2  1.1114 3.1114
+## 3     3  0.5627 3.5627
+## 4     4  1.2538 5.2538
+## 5     5  0.2058 5.2058
+## 6     6  1.8460 7.8460
+## 7     7  1.9196 8.9196
+## 8     8  1.0385 9.0385
+## 9     9  0.4043 9.4043
+## 10   10 -0.3654 9.6346
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -805,15 +807,8 @@ This works even without passing in b or c.
 \end{frame}
 
 
-\begin{frame}[fragile]{Mixing methods}
-Its even possible to mix these two methods:
-\linebreak
-TODO-think of example with enough arguments to demo mixing pass by position and by name.
 
-
-\end{frame}
-
-\begin{frame}[fragile]{partial matching}
+\begin{frame}[fragile]{Partial matching}
 When matching arguments, R will try and match part of a arguments name. This is know as Partial matching.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -840,9 +835,9 @@ When trying to match arguments, R will test in the following order:
 \linebreak
 1) exact match.
 \linebreak
-2)partial match.
+2) partial match.
 \linebreak
-3)positional match
+3) positional match
 \end{frame}
 
 \begin{frame}[fragile]{}
@@ -941,10 +936,10 @@ Thank you.
 \item Describe the heirachy of packages, functions and libraries.
 \item List the libraries on your computer.
 \item Give 5 packges that are already installed on your machine.
-\item Choose and install a package from CRAN
-\item Load a package into your R environment, and call it.
+\item Find and install the "Xtable" package from CRAN.
+\item Load any package into your R environment, and make use of some piece of it, without errors.
 \item Write your own function to take two numbers, multiply them, and print the result within the function.
-\item Modify your function to accept arguments by name.
+\item Make sure your function can accept arguments by name.
 \item Call your function using partial matching.
 \end{itemize}
 \end{frame}
