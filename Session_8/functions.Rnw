@@ -1,4 +1,6 @@
 \documentclass{beamer}
+\usetheme{Boadilla}
+\useoutertheme{infolinesdave}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 
@@ -10,7 +12,9 @@
 
 \title{Functions and packages}
 \author{David Matten}
+\institute[SACEMA]{\includegraphics[height=1.5cm, width=4.5cm]{pictures/sacema.jpg}}
 \date{09 June 2014}
+
 
 \maketitle
 
@@ -19,7 +23,7 @@
 This slide deck will cover the following questions:
 \begin{itemize}
 \item What is a library, and where to find your own.
-\item What is a package, and why we use them.
+\item What is a package, and why do we use them.
 \item How to get more packages.
 \item How to use a package.
 \item What is a script.
@@ -49,7 +53,7 @@ Being able to share your solutions, or use what others have developed is hugely 
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/library_function_heirachy.jpeg}
+\includegraphics[width=90mm]{pictures/library_function_heirachy.png}
 \label{overflow}
 \end{figure}
 
@@ -79,7 +83,7 @@ Packages can contain both data, R files and external code.
 \begin{frame}[fragile]{Packages contain a standard set of items.}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/library_screenCap_colorized.jpg}
+\includegraphics[width=90mm]{pictures/library_screenCap_colorized.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -98,7 +102,7 @@ There are two main ways to obtain packages from within RStudio:
 In RStudio, under Packages, select "Install Packages". Search for the Package name. Install.
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/package_install_CRAN.jpg}
+\includegraphics[width=90mm]{pictures/package_install_CRAN.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -106,7 +110,7 @@ In RStudio, under Packages, select "Install Packages". Search for the Package na
 \begin{frame}[fragile]{From a local file}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/package_install_local.jpg}
+\includegraphics[width=90mm]{pictures/package_install_local.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -116,7 +120,7 @@ In RStudio, under Packages, select "Install Packages". Search for the Package na
 We can find old versions of packages from the CRAN website
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/cran_old_package_versions2.jpg}
+\includegraphics[width=90mm]{pictures/cran_old_package_versions2.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -124,7 +128,7 @@ We can find old versions of packages from the CRAN website
 \begin{frame}[fragile]{Old versions? contd.}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/cran_old_package_versions_boot.jpg}
+\includegraphics[width=90mm]{pictures/cran_old_package_versions_boot.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -143,7 +147,7 @@ Here, we load the package named "boot".
 Once we have aquired a package, we can find out more about its contents by using help
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/help_boot.jpg}
+\includegraphics[width=90mm]{pictures/help_boot.png}
 \label{overflow}
 \end{figure}
 <<eval=FALSE>>=
@@ -157,7 +161,7 @@ library(help="boot")
 From the previous slide, we see that the package "boot" include a function called "abc.ci". I don't know what this function does, so to find out I can ask R for help on this function.
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/help_abc_ci.jpg}
+\includegraphics[width=90mm]{pictures/help_abc_ci.png}
 \label{overflow}
 \end{figure}
 <<eval=FALSE>>=
@@ -172,11 +176,9 @@ help(abc.ci)
 Scripts are files.
 \linebreak
 Scripts can contain functions and lists of instructions. Typically they have the extension ".R"
-\linebreak 
-Under the "R" folder of a package, we can find examples of scripts.
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/example_script.jpg}
+\includegraphics[width=90mm]{pictures/example_script.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -236,7 +238,7 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 \begin{frame}[fragile]{sd}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/sd.jpg}
+\includegraphics[width=90mm]{pictures/sd.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -245,7 +247,7 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 \begin{frame}[fragile]{factor}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/factor.jpg}
+\includegraphics[width=90mm]{pictures/factor.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -254,7 +256,7 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 \begin{frame}[fragile]{table}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/table.jpg}
+\includegraphics[width=90mm]{pictures/table.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -264,7 +266,7 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 
 \begin{itemize}
 \item Able to write general code to re-use
-\item Free's up cognative space
+\item Frees up cognitive space
 \item Makes debugging easier
 \item Easier to read - broken into logical blocks of code
 \end{itemize}
@@ -519,7 +521,9 @@ This just means, a variable number of arguments. Typically, they are passed onto
 \end{frame}
 
 \begin{frame}[fragile]{Return}
-We can pass arguments to a function, and functions are able to return values to where they were called.
+Previously we have seen how to pass values to a function, now lets look at how to get values back from a function.
+\linebreak
+This is called "returning" a value from a function.
 <<>>=
 f <- function()
 {
@@ -570,12 +574,12 @@ Thank you.
 
 
 \begin{itemize}
-\item Describe the heirachy of packages, functions and libraries.
+\item Describe the hierarchy of packages, functions and libraries.
 \item List the libraries on your computer.
-\item Give 5 packges that are already installed on your machine.
+\item Give 5 packages that are already installed on your machine.
 \item Find and install the "Xtable" package from CRAN.
 \item Load any package into your R environment, and make use of some piece of it, without errors.
-\item Write your own function to take two numbers, multiply them, and print the result within the function.
+\item Write your own function to take two numbers, multiply them, and print the result within the function. You do not need to return the result from the function.
 \item Make sure your function can accept arguments by name.
 \item Call your function using partial matching.
 \end{itemize}

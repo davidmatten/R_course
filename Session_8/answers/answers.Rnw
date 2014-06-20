@@ -1,0 +1,108 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+\useoutertheme{infolinesdave}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\newcommand\myheading[1]{%
+  \par\bigskip
+  {\Large\bfseries#1}\par\smallskip}
+
+\begin{document}
+
+\title{Functions and packages. Tutorial Solutions}
+\author{David Matten}
+\institute[SACEMA]{\includegraphics[height=1.5cm, width=4.5cm]{pictures/sacema.jpg}}
+\date{09 June 2014}
+
+
+\maketitle
+
+
+\begin{frame}[fragile]{Tutorial Solutions}
+
+\begin{itemize}
+\item Describe the hierarchy of packages, functions and libraries.
+\end{itemize}
+Libraries contain packages.
+Packages are collections of R functions, data, and background code in a well-defined format.
+
+\begin{itemize}
+\item List the libraries on your computer.
+\end{itemize}
+A library is a folder on your computer where packages are stored.
+Use the command
+<<eval=FALSE>>=
+.libPaths()
+@
+to find your own.
+\end{frame}
+
+\begin{frame}[fragile]{contd.}
+
+\begin{itemize}
+\item Give 5 packages that are already installed on your machine.
+\end{itemize}
+You can use the function:
+<<eval=FALSE>>=
+installed.packages()
+@
+for a complete list.
+
+\begin{itemize}
+\item Find and install the ”Xtable” package from CRAN.
+\end{itemize}
+
+\begin{itemize}
+\item Load any package into your R environment, and make use of some piece of it, without errors.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{contd.}
+
+
+
+\begin{itemize}
+\item Write your own function to take two numbers, multiply them, and print the result within the function. You do not need to return the result from the function.
+\end{itemize}
+An example function might be:
+<<>>=
+f <- function(first, second){
+z <- first * second
+print(z)
+}
+@
+
+\begin{itemize}
+\item Make sure your function can accept arguments by name.
+\end{itemize}
+Lets prove to ourselves this works.
+<<>>=
+f(first=4, second=5)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{contd.}
+
+\begin{itemize}
+\item Call your function using partial matching.
+\end{itemize}
+<<>>=
+f(fir=2, s=7)
+f(s=7, fir=2)
+
+@
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{end}
+Thank you.
+\end{frame}
+
+
+\end{document}

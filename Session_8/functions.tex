@@ -48,6 +48,8 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
+\usetheme{Boadilla}
+\useoutertheme{infolinesdave}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 
@@ -55,12 +57,13 @@
   \par\bigskip
   {\Large\bfseries#1}\par\smallskip}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-
 \begin{document}
 
 \title{Functions and packages}
 \author{David Matten}
+\institute[SACEMA]{\includegraphics[height=1.5cm, width=4.5cm]{pictures/sacema.jpg}}
 \date{09 June 2014}
+
 
 \maketitle
 
@@ -69,7 +72,7 @@
 This slide deck will cover the following questions:
 \begin{itemize}
 \item What is a library, and where to find your own.
-\item What is a package, and why we use them.
+\item What is a package, and why do we use them.
 \item How to get more packages.
 \item How to use a package.
 \item What is a script.
@@ -99,7 +102,7 @@ Being able to share your solutions, or use what others have developed is hugely 
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/library_function_heirachy.jpeg}
+\includegraphics[width=90mm]{pictures/library_function_heirachy.png}
 \label{overflow}
 \end{figure}
 
@@ -122,7 +125,6 @@ These are directories of packages.
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 
@@ -137,7 +139,6 @@ R comes with a standard set of packages. We can see what packages are currently 
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 Packages can contain both data, R files and external code.
 \end{frame}
 
@@ -145,7 +146,7 @@ Packages can contain both data, R files and external code.
 \begin{frame}[fragile]{Packages contain a standard set of items.}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/library_screenCap_colorized.jpg}
+\includegraphics[width=90mm]{pictures/library_screenCap_colorized.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -164,7 +165,7 @@ There are two main ways to obtain packages from within RStudio:
 In RStudio, under Packages, select "Install Packages". Search for the Package name. Install.
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/package_install_CRAN.jpg}
+\includegraphics[width=90mm]{pictures/package_install_CRAN.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -172,7 +173,7 @@ In RStudio, under Packages, select "Install Packages". Search for the Package na
 \begin{frame}[fragile]{From a local file}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/package_install_local.jpg}
+\includegraphics[width=90mm]{pictures/package_install_local.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -182,7 +183,7 @@ In RStudio, under Packages, select "Install Packages". Search for the Package na
 We can find old versions of packages from the CRAN website
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/cran_old_package_versions2.jpg}
+\includegraphics[width=90mm]{pictures/cran_old_package_versions2.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -190,7 +191,7 @@ We can find old versions of packages from the CRAN website
 \begin{frame}[fragile]{Old versions? contd.}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/cran_old_package_versions_boot.jpg}
+\includegraphics[width=90mm]{pictures/cran_old_package_versions_boot.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -205,7 +206,6 @@ Once we have acquired a package, we have to load it into the current session. Us
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 Here, we load the package named "boot".
 \end{frame}
 
@@ -214,18 +214,17 @@ Here, we load the package named "boot".
 Once we have aquired a package, we can find out more about its contents by using help
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/help_boot.jpg}
+\includegraphics[width=90mm]{pictures/help_boot.png}
 \label{overflow}
 \end{figure}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{help}\hlstd{(boot)}
-\hlkwd{library}\hlstd{(}\hlkwc{help} \hlstd{=} \hlstr{"boot"}\hlstd{)}
+\hlkwd{library}\hlstd{(}\hlkwc{help}\hlstd{=}\hlstr{"boot"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 
@@ -233,7 +232,7 @@ Once we have aquired a package, we can find out more about its contents by using
 From the previous slide, we see that the package "boot" include a function called "abc.ci". I don't know what this function does, so to find out I can ask R for help on this function.
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/help_abc_ci.jpg}
+\includegraphics[width=90mm]{pictures/help_abc_ci.png}
 \label{overflow}
 \end{figure}
 \begin{knitrout}
@@ -244,7 +243,6 @@ From the previous slide, we see that the package "boot" include a function calle
 \end{kframe}
 \end{knitrout}
 
-
 \end{frame}
 
 
@@ -253,11 +251,9 @@ From the previous slide, we see that the package "boot" include a function calle
 Scripts are files.
 \linebreak
 Scripts can contain functions and lists of instructions. Typically they have the extension ".R"
-\linebreak 
-Under the "R" folder of a package, we can find examples of scripts.
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/example_script.jpg}
+\includegraphics[width=90mm]{pictures/example_script.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -280,32 +276,30 @@ Imagine we have a collection of individuals heights and weights. We want to calc
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{heights} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1.5}\hlstd{,} \hlnum{1.92}\hlstd{,} \hlnum{1.74}\hlstd{,} \hlnum{1.67}\hlstd{)}
+\hlstd{heights} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1.50}\hlstd{,} \hlnum{1.92}\hlstd{,} \hlnum{1.74}\hlstd{,} \hlnum{1.67}\hlstd{)}
 
 \hlstd{weights} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{80}\hlstd{,} \hlnum{94}\hlstd{,} \hlnum{78}\hlstd{,} \hlnum{58}\hlstd{)}
 
-\hlstd{weights}\hlopt{/}\hlstd{(heights} \hlopt{*} \hlstd{heights)}
+\hlstd{weights} \hlopt{/} \hlstd{( heights} \hlopt{*} \hlstd{heights )}
 \end{alltt}
 \begin{verbatim}
 ## [1] 35.56 25.50 25.76 20.80
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 \begin{frame}[fragile]{With a function...}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{calcBMI} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{weights}\hlstd{,} \hlkwc{heights}\hlstd{) \{}
-    \hlstd{x} \hlkwb{<-} \hlstd{weights}\hlopt{/}\hlstd{(heights} \hlopt{*} \hlstd{heights)}
-    \hlkwd{return}\hlstd{(x)}
+\hlstd{calcBMI} \hlkwb{<-} \hlkwa{function} \hlstd{(}\hlkwc{weights}\hlstd{,} \hlkwc{heights}\hlstd{) \{}
+      \hlstd{x} \hlkwb{<-} \hlstd{weights} \hlopt{/} \hlstd{( heights} \hlopt{*} \hlstd{heights )}
+      \hlkwd{return} \hlstd{(x)}
 \hlstd{\}}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 This is like a recipe.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -317,7 +311,6 @@ This is like a recipe.
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 This is like telling R to make the recipe.
 \linebreak
 \linebreak
@@ -338,7 +331,7 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 \begin{frame}[fragile]{sd}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/sd.jpg}
+\includegraphics[width=90mm]{pictures/sd.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -347,7 +340,7 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 \begin{frame}[fragile]{factor}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/factor.jpg}
+\includegraphics[width=90mm]{pictures/factor.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -356,7 +349,7 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 \begin{frame}[fragile]{table}
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{pictures/table.jpg}
+\includegraphics[width=90mm]{pictures/table.png}
 \label{overflow}
 \end{figure}
 \end{frame}
@@ -366,7 +359,7 @@ Look at the next few pieces of code for increasing complex examples, can you tel
 
 \begin{itemize}
 \item Able to write general code to re-use
-\item Free's up cognative space
+\item Frees up cognitive space
 \item Makes debugging easier
 \item Easier to read - broken into logical blocks of code
 \end{itemize}
@@ -389,19 +382,17 @@ f <- \hlkwd{function}(<arguments>) \{
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 And, with our example...
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{calcBMI} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{weights}\hlstd{,} \hlkwc{heights}\hlstd{) \{}
-    \hlstd{x} \hlkwb{<-} \hlstd{weights}\hlopt{/}\hlstd{(heights} \hlopt{*} \hlstd{heights)}
-    \hlkwd{return}\hlstd{(x)}
+\hlstd{calcBMI} \hlkwb{<-} \hlkwa{function} \hlstd{(}\hlkwc{weights}\hlstd{,} \hlkwc{heights}\hlstd{) \{}
+      \hlstd{x} \hlkwb{<-} \hlstd{weights} \hlopt{/} \hlstd{( heights} \hlopt{*} \hlstd{heights )}
+      \hlkwd{return} \hlstd{(x)}
 \hlstd{\}}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 \begin{frame}[fragile]{Syntax contd.}
@@ -436,12 +427,11 @@ Lets take a look at the inner workings of the function: mean
 ##     }
 ##     .Internal(mean(x))
 ## }
-## <bytecode: 0x2d40e88>
+## <bytecode: 0x315b078>
 ## <environment: namespace:base>
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 % Now you have a grasp on the syntax of a function, lets try write our own.
@@ -452,10 +442,11 @@ Lets write a function to calculate the average age of a group of rally drivers.
 \begin{alltt}
 \hlstd{ages} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{27}\hlstd{,} \hlnum{24}\hlstd{,} \hlnum{35}\hlstd{,} \hlnum{24}\hlstd{,} \hlnum{24}\hlstd{,} \hlnum{33}\hlstd{,} \hlnum{35}\hlstd{,} \hlnum{22}\hlstd{,} \hlnum{28}\hlstd{)}
 
-\hlstd{average} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{) \{}
+\hlstd{average} \hlkwb{<-} \hlkwa{function} \hlstd{(}\hlkwc{x}\hlstd{)}
+\hlstd{\{}
     \hlstd{sumx} \hlkwb{<-} \hlkwd{sum}\hlstd{(x)}
     \hlstd{countx} \hlkwb{<-} \hlkwd{length}\hlstd{(x)}
-    \hlkwd{return}\hlstd{(sumx}\hlopt{/}\hlstd{countx)}
+    \hlkwd{return} \hlstd{(sumx} \hlopt{/} \hlstd{countx)}
 \hlstd{\}}
 
 \hlkwd{average}\hlstd{(ages)}
@@ -465,7 +456,6 @@ Lets write a function to calculate the average age of a group of rally drivers.
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 
@@ -482,7 +472,6 @@ We cheated a little in the above example, by making use of functions within our 
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 is a function.
 \linebreak
 \linebreak
@@ -497,7 +486,6 @@ In fact, we could have just used the function:
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 %\begin{frame}[fragile]{Environments}
@@ -513,11 +501,10 @@ Setting a variable
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{var} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{3}\hlstd{)}
+\hlstd{var} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{,}\hlnum{3}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 Seeing what is inside that variable.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -529,7 +516,6 @@ Seeing what is inside that variable.
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 %Show how a variable set inside a function, is local to that function. demo error.
 %Draw a picture
@@ -539,13 +525,13 @@ Setting the variable inside a function
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{create_var} \hlkwb{<-} \hlkwa{function}\hlstd{() \{}
-    \hlstd{var2} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{3}\hlstd{)}
+\hlstd{create_var} \hlkwb{<-} \hlkwa{function} \hlstd{()}
+\hlstd{\{}
+    \hlstd{var2} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{,}\hlnum{3}\hlstd{)}
 \hlstd{\}}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 Call the function
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -554,7 +540,6 @@ Call the function
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 Try see whats inside the variable.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -565,7 +550,6 @@ Try see whats inside the variable.
 
 {\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: object 'var2' not found}}\end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 \begin{frame}[fragile]{Variables set outside functions, are globally available}
@@ -573,22 +557,21 @@ Setting the variable outside a function
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{var3} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{3}\hlstd{)}
+\hlstd{var3} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{,}\hlnum{3}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 Make the function
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{print_var} \hlkwb{<-} \hlkwa{function}\hlstd{() \{}
+\hlstd{print_var} \hlkwb{<-} \hlkwa{function} \hlstd{()}
+\hlstd{\{}
     \hlkwd{print}\hlstd{(var3)}
 \hlstd{\}}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 Try see whats inside the variable, from within the function.
 \linebreak
 Call the function.
@@ -602,7 +585,6 @@ Call the function.
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 
@@ -611,26 +593,25 @@ One last note on environments.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{df} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwc{col1} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{10}\hlstd{,} \hlkwc{col2} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlnum{10}\hlstd{))}
+\hlstd{df} \hlkwb{=} \hlkwd{data.frame}\hlstd{(}\hlkwc{col1}\hlstd{=}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{,} \hlkwc{col2}\hlstd{=}\hlkwd{rnorm}\hlstd{(}\hlnum{10}\hlstd{))}
 
 \hlkwd{print}\hlstd{(df)}
 \end{alltt}
 \begin{verbatim}
 ##    col1    col2
-## 1     1 -0.2004
-## 2     2  1.1114
-## 3     3  0.5627
-## 4     4  1.2538
-## 5     5  0.2058
-## 6     6  1.8460
-## 7     7  1.9196
-## 8     8  1.0385
-## 9     9  0.4043
-## 10   10 -0.3654
+## 1     1 -0.2034
+## 2     2  0.3684
+## 3     3 -0.8000
+## 4     4  0.5970
+## 5     5 -0.4894
+## 6     6  2.0046
+## 7     7 -0.1495
+## 8     8 -1.9033
+## 9     9 -0.5633
+## 10   10 -0.3746
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 
 \end{frame}
 
@@ -645,31 +626,29 @@ Can we access those col1 and col2 variables?
 
 {\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: object 'col1' not found}}\end{kframe}
 \end{knitrout}
-
 Looks like not... 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{df} \hlkwb{<-} \hlkwd{transform}\hlstd{(df,} \hlkwc{col3} \hlstd{= col1} \hlopt{+} \hlstd{col2)}
+\hlstd{df} \hlkwb{<-} \hlkwd{transform}\hlstd{(df,} \hlkwc{col3}\hlstd{=col1}\hlopt{+}\hlstd{col2)}
 
 \hlkwd{print}\hlstd{(df)}
 \end{alltt}
 \begin{verbatim}
 ##    col1    col2   col3
-## 1     1 -0.2004 0.7996
-## 2     2  1.1114 3.1114
-## 3     3  0.5627 3.5627
-## 4     4  1.2538 5.2538
-## 5     5  0.2058 5.2058
-## 6     6  1.8460 7.8460
-## 7     7  1.9196 8.9196
-## 8     8  1.0385 9.0385
-## 9     9  0.4043 9.4043
-## 10   10 -0.3654 9.6346
+## 1     1 -0.2034 0.7966
+## 2     2  0.3684 2.3684
+## 3     3 -0.8000 2.2000
+## 4     4  0.5970 4.5970
+## 5     5 -0.4894 4.5106
+## 6     6  2.0046 8.0046
+## 7     7 -0.1495 6.8505
+## 8     8 -1.9033 6.0967
+## 9     9 -0.5633 8.4367
+## 10   10 -0.3746 9.6254
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 \begin{frame}[fragile]{Environments contd.}
@@ -689,8 +668,8 @@ Named arguments example:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{first}\hlstd{,} \hlkwc{second}\hlstd{) \{}
-    \hlstd{x} \hlkwb{<-} \hlstd{first} \hlopt{-} \hlstd{second}
+\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{first}\hlstd{,} \hlkwc{second}\hlstd{)\{}
+    \hlstd{x}\hlkwb{<-}\hlstd{first} \hlopt{-} \hlstd{second}
     \hlkwd{return}\hlstd{(x)}
 \hlstd{\}}
 \hlkwd{f}\hlstd{(}\hlkwc{first} \hlstd{=} \hlnum{10}\hlstd{,} \hlkwc{second} \hlstd{=} \hlnum{8}\hlstd{)}
@@ -700,19 +679,17 @@ Named arguments example:
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 And we could equally do
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{f}\hlstd{(}\hlkwc{second} \hlstd{=} \hlnum{8}\hlstd{,} \hlkwc{first} \hlstd{=} \hlnum{10}\hlstd{)}
+\hlkwd{f}\hlstd{(}\hlkwc{second}\hlstd{=}\hlnum{8}\hlstd{,} \hlkwc{first}\hlstd{=}\hlnum{10}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 2
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 Because these are named, the order in which we pass them to the function does not matter.
 \end{frame}
 
@@ -722,14 +699,13 @@ Positional
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{first}\hlstd{,} \hlkwc{second}\hlstd{) \{}
+\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{first}\hlstd{,} \hlkwc{second}\hlstd{)\{}
     \hlstd{x} \hlkwb{<-} \hlstd{first} \hlopt{-} \hlstd{second}
     \hlkwd{return}\hlstd{(x)}
 \hlstd{\}}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-
 Now if we swap the order, the results change
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -747,7 +723,6 @@ Now if we swap the order, the results change
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 \begin{frame}[fragile]{So many ways to call a function}
@@ -755,32 +730,31 @@ This means that all of these are equivalent:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{seq}\hlstd{(}\hlkwc{from} \hlstd{=} \hlnum{1}\hlstd{,} \hlkwc{to} \hlstd{=} \hlnum{10}\hlstd{,} \hlkwc{by} \hlstd{=} \hlnum{1}\hlstd{)}
+\hlkwd{seq}\hlstd{(}\hlkwc{from}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{to}\hlstd{=}\hlnum{10}\hlstd{,} \hlkwc{by}\hlstd{=}\hlnum{1}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 \end{verbatim}
 \begin{alltt}
-\hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,} \hlnum{10}\hlstd{,} \hlnum{1}\hlstd{)}
+\hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{10}\hlstd{,}\hlnum{1}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 \end{verbatim}
 \begin{alltt}
-\hlkwd{seq}\hlstd{(}\hlkwc{by} \hlstd{=} \hlnum{1}\hlstd{,} \hlnum{1}\hlstd{,} \hlnum{10}\hlstd{)}
+\hlkwd{seq}\hlstd{(}\hlkwc{by}\hlstd{=}\hlnum{1}\hlstd{,}\hlnum{1}\hlstd{,}\hlnum{10}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 \end{verbatim}
 \begin{alltt}
-\hlkwd{seq}\hlstd{(}\hlkwc{to} \hlstd{=} \hlnum{10}\hlstd{,} \hlkwc{by} \hlstd{=} \hlnum{1}\hlstd{,} \hlkwc{from} \hlstd{=} \hlnum{1}\hlstd{)}
+\hlkwd{seq}\hlstd{(}\hlkwc{to}\hlstd{=}\hlnum{10}\hlstd{,}\hlkwc{by}\hlstd{=}\hlnum{1}\hlstd{,}\hlkwc{from}\hlstd{=}\hlnum{1}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 
@@ -790,7 +764,7 @@ Its possible to skip arguments, or assign defaults
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{ages} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{34}\hlstd{,} \hlnum{52}\hlstd{,} \hlnum{23}\hlstd{,} \hlnum{33}\hlstd{,} \hlnum{33}\hlstd{,} \hlnum{41}\hlstd{)}
-\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{a}\hlstd{,} \hlkwc{b}\hlstd{,} \hlkwc{c} \hlstd{=} \hlnum{TRUE}\hlstd{) \{}
+\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{a}\hlstd{,}\hlkwc{b}\hlstd{,}\hlkwc{c}\hlstd{=}\hlnum{TRUE}\hlstd{)\{}
     \hlkwd{print}\hlstd{(}\hlkwd{mean}\hlstd{(a))}
     \hlkwd{print}\hlstd{(c)}
 \hlstd{\}}
@@ -802,7 +776,6 @@ Its possible to skip arguments, or assign defaults
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 This works even without passing in b or c.
 \end{frame}
 
@@ -813,11 +786,12 @@ When matching arguments, R will try and match part of a arguments name. This is 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{first}\hlstd{,} \hlkwc{second}\hlstd{) \{}
+\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{first}\hlstd{,} \hlkwc{second}\hlstd{)}
+\hlstd{\{}
     \hlkwd{print}\hlstd{(first)}
     \hlkwd{print}\hlstd{(second)}
 \hlstd{\}}
-\hlkwd{f}\hlstd{(}\hlkwc{first} \hlstd{=} \hlstr{"first argument"}\hlstd{,} \hlkwc{sec} \hlstd{=} \hlstr{"second argument"}\hlstd{)}
+\hlkwd{f}\hlstd{(}\hlkwc{first}\hlstd{=}\hlstr{"first argument"}\hlstd{,} \hlkwc{sec}\hlstd{=}\hlstr{"second argument"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## [1] "first argument"
@@ -825,7 +799,6 @@ When matching arguments, R will try and match part of a arguments name. This is 
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 We only partly name "second" as "sec". And R still understands.
 \end{frame}
 
@@ -847,11 +820,14 @@ This just means, a variable number of arguments. Typically, they are passed onto
 \end{frame}
 
 \begin{frame}[fragile]{Return}
-We can pass arguments to a function, and functions are able to return values to where they were called.
+Previously we have seen how to pass values to a function, now lets look at how to get values back from a function.
+\linebreak
+This is called "returning" a value from a function.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{() \{}
+\hlstd{f} \hlkwb{<-} \hlkwa{function}\hlstd{()}
+\hlstd{\{}
     \hlkwd{return}\hlstd{(}\hlnum{10}\hlstd{)}
 \hlstd{\}}
 \hlkwd{f}\hlstd{()}
@@ -861,7 +837,6 @@ We can pass arguments to a function, and functions are able to return values to 
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 We are able to capture this return value.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -874,7 +849,6 @@ We are able to capture this return value.
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 \begin{frame}[fragile]{Return}
@@ -882,8 +856,8 @@ Some functions return lots.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{year} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{2000}\hlstd{,} \hlnum{2001}\hlstd{,} \hlnum{2002}\hlstd{,} \hlnum{2003}\hlstd{,} \hlnum{2004}\hlstd{)}
-\hlstd{rate} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{9.34}\hlstd{,} \hlnum{8.5}\hlstd{,} \hlnum{7.62}\hlstd{,} \hlnum{6.93}\hlstd{,} \hlnum{6.6}\hlstd{)}
+\hlstd{year} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{2000} \hlstd{,}   \hlnum{2001}  \hlstd{,}  \hlnum{2002}  \hlstd{,}  \hlnum{2003} \hlstd{,}   \hlnum{2004}\hlstd{)}
+\hlstd{rate} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{9.34} \hlstd{,}   \hlnum{8.50}  \hlstd{,}  \hlnum{7.62}  \hlstd{,}  \hlnum{6.93}  \hlstd{,}  \hlnum{6.60}\hlstd{)}
 \hlstd{fit} \hlkwb{<-} \hlkwd{lm}\hlstd{(rate} \hlopt{~} \hlstd{year)}
 \hlkwd{attributes}\hlstd{(fit)}
 \end{alltt}
@@ -905,7 +879,6 @@ Some functions return lots.
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-
 \end{frame}
 
 
@@ -933,12 +906,12 @@ Thank you.
 
 
 \begin{itemize}
-\item Describe the heirachy of packages, functions and libraries.
+\item Describe the hierarchy of packages, functions and libraries.
 \item List the libraries on your computer.
-\item Give 5 packges that are already installed on your machine.
+\item Give 5 packages that are already installed on your machine.
 \item Find and install the "Xtable" package from CRAN.
 \item Load any package into your R environment, and make use of some piece of it, without errors.
-\item Write your own function to take two numbers, multiply them, and print the result within the function.
+\item Write your own function to take two numbers, multiply them, and print the result within the function. You do not need to return the result from the function.
 \item Make sure your function can accept arguments by name.
 \item Call your function using partial matching.
 \end{itemize}
